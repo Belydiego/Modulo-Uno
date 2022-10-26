@@ -6,9 +6,9 @@ let arrayUno = [];
 while (counter < 87) {
   let numeroRandom = Math.round(Math.random() * 80 + 10);
   counter++;
-  arrayUno[array.length] = numeroRandom;
+  arrayUno[arrayUno.length] = numeroRandom;
 }
-console.log(arrayUno.length);
+console.log(arrayUno);
 
 let numerosPar = 0;
 let numerosImpar = 0;
@@ -23,7 +23,7 @@ for (let index = 0; index < arrayUno.length; index++) {
 
 // Ejercicio 2 for
 
-/*const objectUno = {
+const objectUno = {
   jswolulduo: "xajohreoec",
   xqannahpwr: "uwhoqkdcue",
   akuefkgvps: "fzgauhdzlj",
@@ -45,4 +45,4 @@ for (let index = 0; index < keys.length; index++) {
   objectDos[valor] = clave;
 }
 console.log("Objeto uno: ", objectUno);
-console.log("object dos: ", objectDos);*/
+console.log("object dos: ", objectDos);
