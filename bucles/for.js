@@ -14,14 +14,18 @@ let numerosPar = 0;
 let numerosImpar = 0;
 
 for (let index = 0; index < arrayUno.length; index++) {
-  const resto = arrayUno[index] % 2;
-  if (resto === 0) {
-    let numerosImpar = arrayUno[arrayUno.length];
+  const numeroActual = arrayUno[index];
+  const division = numeroActual % 2;
+  const resultado = division == 0;
+  if (resultado) {
+    numerosPar++;
+  } else {
+    numerosImpar++;
   }
-  console.log(numerosImpar);
 }
+console.log(numerosPar, numerosImpar);
 
-// Ejercicio 2 for
+//Ejercicio 2 for
 
 const objectUno = {
   jswolulduo: "xajohreoec",
