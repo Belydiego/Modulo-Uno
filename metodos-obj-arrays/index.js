@@ -2,6 +2,7 @@
 // Completar acá.
 // Escribir la función soloObjetosConNombreYApellido()
 // y pasar el test.
+function soloObjetosConNombreyApellido(collection) {}
 
 // Escribir la función soloLosNombres()
 // y pasar el test.
