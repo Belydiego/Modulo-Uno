@@ -2,10 +2,30 @@
 // Completar acá.
 // Escribir la función soloObjetosConNombreYApellido()
 // y pasar el test.
-function soloObjetosConNombreyApellido(collection) {}
+
+function soloObjetosConNombreYApellido(collection) {
+  const arrayDeObj = collection.filter(function (item) {
+    return item.nombre && item.apellido;
+  });
+  return arrayDeObj;
+}
 
 // Escribir la función soloLosNombres()
 // y pasar el test.
+
+function soloLosNombres(collection) {
+  const arrayDeStrings = collection.map(function (objeto) {
+    return objeto.nombre;
+  });
+
+  const nombresConMayusculas = arrayDeStrings.map(function (nombre) {
+    const primerCaracter = nombre.charAt(0);
+    const mayuscula = primerCaracter.toUpperCase();
+    const restoDelTexto = nombre.slice(1);
+    return mayuscula + restoDelTexto;
+  });
+  return nombresConMayusculas;
+}
 
 // Tests. No modificar!
 function testSoloObjetosConNombreYApellido() {
