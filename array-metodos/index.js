@@ -5,6 +5,9 @@ function crearArrayDeObjetos(arrayDeNumeros, nombreDePropiedad) {
   // debe devolver
   // [{ a:1 }, { a:2 }, { a:3 }, { a:4 }]
   // usar método map
+  return arrayDeNumeros.map(function (num) {
+    return { a: num };
+  });
 }
 function filtrarPor(arrayDeObjetos, nombreDePropiedad, primeraLetra) {
   // si recibe [{ a: 100, unTexto: "hola" }, { a: 34, unTexto: "chau" }]
@@ -13,6 +16,9 @@ function filtrarPor(arrayDeObjetos, nombreDePropiedad, primeraLetra) {
   // debe devolver
   // [{ a: 34, unTexto: "chau" }]
   // usar método filter
+  return arrayDeObjetos.filter(function (item) {
+    return item[nombreDePropiedad].charAt(0) == primeraLetra;
+  });
 }
 
 function buscarPorProp(arrayDeObjetos, nombreDePropiedad, valorABuscar) {
@@ -22,6 +28,9 @@ function buscarPorProp(arrayDeObjetos, nombreDePropiedad, valorABuscar) {
   // debe devolver
   // { a: 34, unTexto: "chau" }
   // usar método find
+  return arrayDeObjetos.find(function (item) {
+    return item[nombreDePropiedad] == valorABuscar;
+  });
 }
 
 function ordenarPor(arrayDeObjetos, nombreDePropiedad) {
@@ -30,6 +39,16 @@ function ordenarPor(arrayDeObjetos, nombreDePropiedad) {
   // debe devolver
   // [{ a: 34, unTexto: "chau" }, { a: 100, unTexto: "hola" }]
   // usar un el método sort
+  return arrayDeObjetos.sort(function (primerItem, segundoItem) {
+    if (primerItem[nombreDePropiedad] > segundoItem[nombreDePropiedad]) {
+      return 1;
+    }
+    if (primerItem[nombreDePropiedad] < segundoItem[nombreDePropiedad]) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
 }
 
 // no modificar el test
