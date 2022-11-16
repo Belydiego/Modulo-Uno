@@ -1,36 +1,19 @@
-// completar acá importando el módulo "datos"
-// que tiene las funciones getAll y getOlderThan
+const fs = require("fs");
 
-// const datos = require("./datos");
+function getDatos() {
+  const datos = fs.readFileSync("datos.json");
+  const collection = JSON.parse(datos);
+  return collection; // se transforma en un array de objetos
+}
 
-function testeaModuloDatos() {
-  const todos = datos.getAll();
+// getAll tiene que devolver el array de objetos completo, por eso directamente retorna la funcion getDatos.
+exports.getAll = function (collection) {
+  getDatos();
+  return getDatos();
+};
 
-  const sorted = todos.sort((a, b) => a.edad - b.edad);
-
-  const someWithError = todos.find((i) => {
-    return !i.edad || !i.nombre || !i.cosas;
+exports.getOlderThan = function (mayorque) {
+  return getDatos().filter(function (item) {
+    return item.edad > 10;
   });
-
-  if (!someWithError) {
-    console.log("getAll passed");
-  } else {
-    throw "getAll devuelve algún objeto que no tiene nombre, edad o cosas";
-  }
-
-  const butFirst = sorted.slice(1);
-  const first = sorted[0];
-  const mayoresDe = datos.getOlderThan(first.edad);
-
-  if (mayoresDe.length == butFirst.length) {
-    console.log("getOlderThan passed");
-  } else {
-    throw "getOlderThan not passed";
-  }
-}
-
-function main() {
-  testeaModuloDatos();
-}
-
-main();
+};

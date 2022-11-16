@@ -1,0 +1,16 @@
+[
+  {
+    "nombre": "Diego",
+
+    "edad": 34,
+    "cosas": [2, "Compu", "celular"]
+  },
+
+  {
+    "nombre": "Belen",
+
+    "edad": 26,
+    "cosas": [2, "celular", "tablet"]
+  },
+  { "nombre": "Nina", "edad": 4, "cosas": [2, "pelota", "soga"] }
+]
