@@ -1,22 +1,35 @@
-// este modulo tiene como proposito recibir el input por parte del usuario, entenderlo y delegar la operacion matematica a quien corresponda
-
 const operaciones = require("./operaciones");
 
 function parsearTerminos(texto) {
-  console.log(texto);
+  const primerNumero = Number.parseFloat(texto[0]);
+  const operacion = texto[1];
+  const segundoNumero = Number.parseFloat(texto[2]);
   return {
-    // valores mock (valores maqueta)
-    primerTermino: 2,
-    segundoTermino: 3,
-    operacion: "+",
+    primerNumero: primerNumero,
+    operacion: operacion,
+    segundoNumero: segundoNumero,
   };
 }
 
 function ejecutarOperacion(objOperaciones) {
-  return;
+  const map = {
+    "+": operaciones.sumar,
+    "-": operaciones.restar,
+    "*": operaciones.multiplicar,
+    "/": operaciones.dividir,
+  };
+  const simboloOperacional = map[objOperaciones.operacion];
+  return simboloOperacional(
+    objOperaciones.primerNumero,
+    objOperaciones.segundoNumero
+  );
 }
 
 function main() {
-  operacionParceada = parsearTerminos(process.argv[2]);
+  const argumento = process.argv[2];
+  const argumentosSeparados = argumento.split(/([+-/*])/);
+  const operacionParseada = parsearTerminos(argumentosSeparados);
+
+  console.log(ejecutarOperacion(operacionParseada));
 }
 main();
