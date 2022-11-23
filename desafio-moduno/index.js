@@ -1,12 +1,14 @@
 const pelis = require("./pelis");
 
-function parsearARGV() {
-  const argumentoParseado = sucess.argv(2);
-  //... acá ocurre la magia
-  return {
-    search: "magic",
-    sort: "rating",
-  };
+function parsearARGV(argumentos) {
+  let obj = {};
+  argumentos.forEach((item, indice) => {
+    if (item.startsWith("--")) {
+      const itemSinGuion = item.slice(2);
+      obj[itemSinGuion] = argumentos[indice + 1];
+    }
+  });
+  return obj;
 }
 
 function main() {

@@ -1,42 +1,50 @@
 const fs = require("fs");
 const arrayDePelis = fs.readFileSync(__dirname + "/pelis.json");
-console.log(arrayDePelis);
 
 const getAll = function () {
-  // retorna todas las pelis (collection)
-  // acá hay que leer el archivo y parsearlo
-  return JSON.parse(arrayDePelis);
+  const todasLaspelis = JSON.parse(arrayDePelis);
+  return todasLaspelis;
 };
 
 const searchBy = function (texto, arrayDePelis) {
-  // recibe un array de pelis y las filtra por texto
-  // acá hay que usar el método filter de array
+  const resultadoSearch = arrayDePelis.filter(
+    (item) => item.title.toLowerCase() === texto.toLowerCase()
+  );
+  return resultadoSearch;
 };
+
 const sortBy = function (propiedad, arrayDePelis) {
-  // recibe un array de pelis y las ordena por propiedad
-  // acá se ordena usando el método sort usando el parámetro "propiedad"
-  // tiene que poder ordenar el array contemplando que me pueden pasar cualquier cosa en
-  // el parámetro "propiedad", no solo rating y title
-  // Pista: https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
+  const resultadoSort = arrayDePelis.sort((a, b) =>
+    a[propiedad] > b[propiedad] ? 1 : -1
+  );
+  return resultadoSort;
+};
+
+const searchByTag = function (tag, arrayDePelis) {
+  const resultadotag = arrayDePelis.filter((item) => item.tags.includes(tag));
+  return resultadotag;
+};
+
+const noFormat = function (arrayDePelis) {
+  const resultadoNoFormat = JSON.stringify(arrayDePelis);
+  return resultadoNoFormat;
 };
 
 exports.searchByCriteria = function (criterios) {
-  // comienzo un array vacio que voy a empezar a rellenar con las respuestas de las funciones
-  let tmp = getAll();
+  let pelis = getAll();
 
   if (criterios.search) {
-    console.log("hay search y es", criterios.search);
-    tmp = searchBy(criterios.search, tmp);
-  } else {
-    console.log("no hay search");
+    pelis = searchBy(criterios.search, pelis);
   }
-
   if (criterios.sort) {
-    tmp = sortBy(criterios.sort, tmp);
-    console.log("hay sort y es", criterios.sort);
-  } else {
-    console.log("no hay sort");
+    pelis = sortBy(criterios.sort, pelis);
   }
-  // .. y asi
-  return tmp;
+  if (criterios.tag) {
+    pelis = searchByTag(criterios.tag, pelis);
+  }
+  if (criterios.hasOwnProperty("no-format")) {
+    pelis = noFormat(pelis);
+    return console.log(pelis);
+  }
+  return console.table(pelis);
 };

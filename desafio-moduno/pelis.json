@@ -3,24 +3,24 @@
     "title": "Joker",
     "ranking": 9.5,
     "year": 2019,
-    "tangs": ["drama", "suspense", "crimen"]
+    "tags": ["drama", "suspense", "crimen"]
   },
   {
     "title": "Zack snyder's Justice league",
     "ranking": 8.4,
     "year": 2021,
-    "tangs": ["accion", "adventure", "superhero"]
+    "tags": ["accion", "adventure", "superhero"]
   },
   {
     "title": "Spider-man No Way home",
     "ranking": 9.4,
     "year": 2021,
-    "tangs": ["accion", "adventure", "superhero"]
+    "tags": ["accion", "adventure", "superhero"]
   },
   {
     "title": "John Wick",
     "ranking": 8.9,
     "year": 2014,
-    "tangs": ["accion", "thiller", "crimen"]
+    "tags": ["accion", "thiller", "crimen"]
   }
 ]
