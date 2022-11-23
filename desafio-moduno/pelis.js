@@ -7,16 +7,24 @@ const getAll = function () {
 };
 
 const searchBy = function (texto, arrayDePelis) {
-  const resultadoSearch = arrayDePelis.filter(
-    (item) => item.title.toLowerCase() === texto.toLowerCase()
+  const resultadoSearch = arrayDePelis.filter((item) =>
+    item.title.toLowerCase().includes(texto.toLowerCase())
   );
   return resultadoSearch;
 };
 
 const sortBy = function (propiedad, arrayDePelis) {
-  const resultadoSort = arrayDePelis.sort((a, b) =>
-    a[propiedad] > b[propiedad] ? 1 : -1
-  );
+  const resultadoSort = arrayDePelis.sort((a, b) => {
+    if (a[propiedad] > b[propiedad]) {
+      return 1;
+    }
+    if (a[propiedad] < b[propiedad]) {
+      return -1;
+    }
+    return 0;
+  });
+  /*a[propiedad] > b[propiedad] ? 1 : -1*/
+
   return resultadoSort;
 };
 
@@ -44,7 +52,6 @@ exports.searchByCriteria = function (criterios) {
   }
   if (criterios.hasOwnProperty("no-format")) {
     pelis = noFormat(pelis);
-    return console.log(pelis);
   }
-  return console.table(pelis);
+  return pelis;
 };
